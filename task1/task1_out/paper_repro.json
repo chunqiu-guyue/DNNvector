@@ -1,0 +1,13 @@
+{
+  "n_windows": 697,
+  "unit_scale_applied": 0.001,
+  "x_axis_unit": "us",
+  "min": 0.0022396,
+  "median": 50651.9,
+  "p90": 162665.0,
+  "p99": 162670.0,
+  "max": 162670.0,
+  "size_min": 4096,
+  "size_max": 51380224,
+  "note": "TensorPeriodLog 含全局权重窗口，未做 is_global / is_looped 过滤；t1_analyze 的清洗口径以 interval.config 为准"
+}

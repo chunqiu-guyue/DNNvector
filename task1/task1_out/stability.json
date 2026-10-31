@@ -1,0 +1,484 @@
+{
+  "trace": "C:\\Users\\fangpengru\\Desktop\\vector-lifecycle\\forresnet50\\task1_out\\resnet50_bs16_multi5_kernel_trace.json",
+  "mode_used": "op",
+  "n_recorded_steps": 5,
+  "steps": [
+    "STEP#3",
+    "STEP#4",
+    "STEP#5",
+    "STEP#6",
+    "STEP#7"
+  ],
+  "per_step": [
+    {
+      "step": "STEP#3",
+      "wall_us": 82016.841796875,
+      "kernel_span_us": 79101.859375,
+      "n_kernel": 854,
+      "sum_kernel_us": 73685.719
+    },
+    {
+      "step": "STEP#4",
+      "wall_us": 76357.77294921875,
+      "kernel_span_us": 75671.0341796875,
+      "n_kernel": 854,
+      "sum_kernel_us": 72743.267
+    },
+    {
+      "step": "STEP#5",
+      "wall_us": 77117.84130859375,
+      "kernel_span_us": 76465.67041015625,
+      "n_kernel": 854,
+      "sum_kernel_us": 73882.874
+    },
+    {
+      "step": "STEP#6",
+      "wall_us": 76911.2626953125,
+      "kernel_span_us": 76264.33056640625,
+      "n_kernel": 854,
+      "sum_kernel_us": 73770.952
+    },
+    {
+      "step": "STEP#7",
+      "wall_us": 76178.5283203125,
+      "kernel_span_us": 75681.69091796875,
+      "n_kernel": 854,
+      "sum_kernel_us": 73028.643
+    }
+  ],
+  "wall_cv": 0.03132810607443023,
+  "span_cv": 0.018556330774758892,
+  "wall_cv_ex_first": 0.005808423067508947,
+  "span_cv_ex_first": 0.005340867180782732,
+  "wall_min_max_us": [
+    76178.5283203125,
+    82016.841796875
+  ],
+  "n_kernel_set": [
+    854
+  ],
+  "kernel_count_stable": true,
+  "diagnostics": {
+    "n_cpu_op_in_window": 2503,
+    "n_cpu_op_with_ext_id": 2503,
+    "n_cpu_op_matched_kernel": 410,
+    "top_op_names": [
+      [
+        "aten::empty",
+        530
+      ],
+      [
+        "autograd::engine::evaluate_function: torch::autograd::AccumulateGrad",
+        161
+      ],
+      [
+        "torch::autograd::AccumulateGrad",
+        161
+      ],
+      [
+        "aten::detach",
+        161
+      ],
+      [
+        "detach",
+        161
+      ],
+      [
+        "aten::view",
+        109
+      ],
+      [
+        "aten::add_",
+        85
+      ],
+      [
+        "aten::to",
+        54
+      ]
+    ],
+    "top_matched_op_names": [
+      [
+        "aten::add_",
+        85
+      ],
+      [
+        "aten::cudnn_batch_norm_backward",
+        53
+      ],
+      [
+        "aten::convolution_backward",
+        53
+      ],
+      [
+        "aten::cudnn_convolution",
+        53
+      ],
+      [
+        "aten::cudnn_batch_norm",
+        53
+      ],
+      [
+        "aten::threshold_backward",
+        49
+      ],
+      [
+        "aten::clamp_min_",
+        49
+      ],
+      [
+        "aten::fill_",
+        3
+      ],
+      [
+        "aten::mm",
+        2
+      ],
+      [
+        "aten::nll_loss_backward",
+        1
+      ],
+      [
+        "aten::_log_softmax_backward_data",
+        1
+      ],
+      [
+        "aten::sum",
+        1
+      ]
+    ],
+    "n_forward_ops": 53,
+    "n_backward_ops": 158
+  },
+  "op_level": {
+    "forward_conv": {
+      "n_op_names": 1,
+      "n_positions": 53,
+      "cv_median": 0.007310211997067403,
+      "cv_max": 0.6346190310826416,
+      "n_pos_gt5pct": 14
+    },
+    "backward_conv": {
+      "n_op_names": 1,
+      "n_positions": 53,
+      "cv_median": 0.013034620030640503,
+      "cv_max": 0.4740654888546621,
+      "n_pos_gt5pct": 26
+    },
+    "rows": [
+      {
+        "name": "aten::convolution_backward",
+        "category": "backward",
+        "count_per_step": [
+          53,
+          53,
+          53,
+          53,
+          53
+        ],
+        "n_aligned": 53,
+        "cv_median": 0.013034620030640503,
+        "cv_max": 0.4740654888546621,
+        "n_pos_gt5pct": 26,
+        "mean_us": 593.1350830188679
+      },
+      {
+        "name": "aten::cudnn_convolution",
+        "category": "forward",
+        "count_per_step": [
+          53,
+          53,
+          53,
+          53,
+          53
+        ],
+        "n_aligned": 53,
+        "cv_median": 0.007310211997067403,
+        "cv_max": 0.6346190310826416,
+        "n_pos_gt5pct": 14,
+        "mean_us": 315.8310490566038
+      },
+      {
+        "name": "aten::cudnn_batch_norm_backward",
+        "category": "backward",
+        "count_per_step": [
+          53,
+          53,
+          53,
+          53,
+          53
+        ],
+        "n_aligned": 53,
+        "cv_median": 0.016422326507096862,
+        "cv_max": 1.2773741502127807,
+        "n_pos_gt5pct": 11,
+        "mean_us": 150.97229056603774
+      },
+      {
+        "name": "aten::add_",
+        "category": "other",
+        "count_per_step": [
+          85,
+          85,
+          85,
+          85,
+          85
+        ],
+        "n_aligned": 85,
+        "cv_median": 0.026000790436044,
+        "cv_max": 0.7921686649733691,
+        "n_pos_gt5pct": 18,
+        "mean_us": 60.20086352941176
+      },
+      {
+        "name": "aten::threshold_backward",
+        "category": "backward",
+        "count_per_step": [
+          49,
+          49,
+          49,
+          49,
+          49
+        ],
+        "n_aligned": 49,
+        "cv_median": 0.026184306613335474,
+        "cv_max": 2.075652742503774,
+        "n_pos_gt5pct": 16,
+        "mean_us": 92.75376734693877
+      },
+      {
+        "name": "aten::cudnn_batch_norm",
+        "category": "other",
+        "count_per_step": [
+          53,
+          53,
+          53,
+          53,
+          53
+        ],
+        "n_aligned": 53,
+        "cv_median": 0.00882981933430365,
+        "cv_max": 1.633947018537879,
+        "n_pos_gt5pct": 9,
+        "mean_us": 75.2364603773585
+      },
+      {
+        "name": "aten::clamp_min_",
+        "category": "other",
+        "count_per_step": [
+          49,
+          49,
+          49,
+          49,
+          49
+        ],
+        "n_aligned": 49,
+        "cv_median": 0.013271595275535788,
+        "cv_max": 1.9555042434539343,
+        "n_pos_gt5pct": 7,
+        "mean_us": 44.141538775510206
+      },
+      {
+        "name": "aten::max_pool2d_with_indices_backward",
+        "category": "backward",
+        "count_per_step": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "n_aligned": 1,
+        "cv_median": 0.24684219851318775,
+        "cv_max": 0.24684219851318775,
+        "n_pos_gt5pct": 1,
+        "mean_us": 856.6568
+      },
+      {
+        "name": "aten::max_pool2d_with_indices",
+        "category": "other",
+        "count_per_step": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "n_aligned": 1,
+        "cv_median": 0.004764893969591,
+        "cv_max": 0.004764893969591,
+        "n_pos_gt5pct": 0,
+        "mean_us": 266.11800000000005
+      },
+      {
+        "name": "aten::fill_",
+        "category": "other",
+        "count_per_step": [
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "n_aligned": 3,
+        "cv_median": 0.0246258558987066,
+        "cv_max": 0.6233566343414808,
+        "n_pos_gt5pct": 1,
+        "mean_us": 55.096199999999996
+      },
+      {
+        "name": "aten::addmm",
+        "category": "other",
+        "count_per_step": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "n_aligned": 1,
+        "cv_median": 0.04478103063816742,
+        "cv_max": 0.04478103063816742,
+        "n_pos_gt5pct": 0,
+        "mean_us": 51.397000000000006
+      },
+      {
+        "name": "aten::mm",
+        "category": "other",
+        "count_per_step": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "n_aligned": 2,
+        "cv_median": 0.0038980040419679127,
+        "cv_max": 0.004414695409139546,
+        "n_pos_gt5pct": 0,
+        "mean_us": 20.7168
+      },
+      {
+        "name": "aten::mean",
+        "category": "other",
+        "count_per_step": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "n_aligned": 1,
+        "cv_median": 0.0023500282553947202,
+        "cv_max": 0.0023500282553947202,
+        "n_pos_gt5pct": 0,
+        "mean_us": 29.432799999999997
+      },
+      {
+        "name": "aten::div",
+        "category": "other",
+        "count_per_step": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "n_aligned": 1,
+        "cv_median": 0.005113248885209385,
+        "cv_max": 0.005113248885209385,
+        "n_pos_gt5pct": 0,
+        "mean_us": 12.8256
+      },
+      {
+        "name": "aten::sum",
+        "category": "other",
+        "count_per_step": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "n_aligned": 1,
+        "cv_median": 0.011926521183045389,
+        "cv_max": 0.011926521183045389,
+        "n_pos_gt5pct": 0,
+        "mean_us": 3.0591999999999997
+      },
+      {
+        "name": "aten::_log_softmax_backward_data",
+        "category": "backward",
+        "count_per_step": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "n_aligned": 1,
+        "cv_median": 0.00020553984534429047,
+        "cv_max": 0.00020553984534429047,
+        "n_pos_gt5pct": 0,
+        "mean_us": 2.1758
+      },
+      {
+        "name": "aten::_log_softmax",
+        "category": "other",
+        "count_per_step": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "n_aligned": 1,
+        "cv_median": 0.030542150046756505,
+        "cv_max": 0.030542150046756505,
+        "n_pos_gt5pct": 0,
+        "mean_us": 1.7216
+      },
+      {
+        "name": "aten::nll_loss_forward",
+        "category": "other",
+        "count_per_step": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "n_aligned": 1,
+        "cv_median": 1.4919075440187938e-16,
+        "cv_max": 1.4919075440187938e-16,
+        "n_pos_gt5pct": 0,
+        "mean_us": 1.6640000000000001
+      },
+      {
+        "name": "aten::nll_loss_backward",
+        "category": "backward",
+        "count_per_step": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "n_aligned": 1,
+        "cv_median": 0.043753390834458304,
+        "cv_max": 0.043753390834458304,
+        "n_pos_gt5pct": 0,
+        "mean_us": 1.3058
+      }
+    ]
+  },
+  "fwd_rank_spearman": {
+    "n_pairs": 10,
+    "min": 0.9928571428571429,
+    "median": 0.9964285714285714
+  },
+  "verdict": {
+    "wall_cv": "弱稳定",
+    "kernel_count": "稳定",
+    "rank": "稳定"
+  }
+}

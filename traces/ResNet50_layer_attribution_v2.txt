@@ -1,0 +1,608 @@
+=== ResNet50 ===
+active window: 152940 us
+forward launcher ops: 53, with kernels: 53
+backward launcher ops: 53, with kernels: 45
+
+[forward 00] shapes=[[16, 3, 224, 224], [64, 3, 7, 7], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_tf32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 01] shapes=[[16, 64, 56, 56], [64, 64, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 02] shapes=[[16, 64, 56, 56], [64, 64, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void magma_sgemmEx_kernel<float, float, float, false, false, 6, 3, 5, 3, 3>(int, int, int, BatchedTensor, int, BatchedTe
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+
+[forward 03] shapes=[[16, 64, 56, 56], [256, 64, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 04] shapes=[[16, 64, 56, 56], [256, 64, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 05] shapes=[[16, 256, 56, 56], [64, 256, 1, 1], [], [], [], [], [], [], []]  kernels=1
+    [1] void implicit_convolve_sgemm<float, float, int, 1024, 5, 5, 3, 3, 3, 1, false, false, true>(int, int, int, float const*,
+
+[forward 06] shapes=[[16, 64, 56, 56], [64, 64, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void magma_sgemmEx_kernel<float, float, float, false, false, 6, 3, 5, 3, 3>(int, int, int, BatchedTensor, int, BatchedTe
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+
+[forward 07] shapes=[[16, 64, 56, 56], [256, 64, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 08] shapes=[[16, 256, 56, 56], [64, 256, 1, 1], [], [], [], [], [], [], []]  kernels=1
+    [1] void implicit_convolve_sgemm<float, float, int, 1024, 5, 5, 3, 3, 3, 1, false, false, true>(int, int, int, float const*,
+
+[forward 09] shapes=[[16, 64, 56, 56], [64, 64, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void magma_sgemmEx_kernel<float, float, float, false, false, 6, 3, 5, 3, 3>(int, int, int, BatchedTensor, int, BatchedTe
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+
+[forward 10] shapes=[[16, 64, 56, 56], [256, 64, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 11] shapes=[[16, 256, 56, 56], [128, 256, 1, 1], [], [], [], [], [], [], []]  kernels=1
+    [1] void implicit_convolve_sgemm<float, float, int, 1024, 5, 5, 3, 3, 3, 1, false, false, true>(int, int, int, float const*,
+
+[forward 12] shapes=[[16, 128, 56, 56], [128, 128, 3, 3], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 13] shapes=[[16, 128, 28, 28], [512, 128, 1, 1], [], [], [], [], [], [], []]  kernels=1
+    [1] void implicit_convolve_sgemm<float, float, int, 1024, 5, 5, 3, 3, 3, 1, false, false, true>(int, int, int, float const*,
+
+[forward 14] shapes=[[16, 256, 56, 56], [512, 256, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 15] shapes=[[16, 512, 28, 28], [128, 512, 1, 1], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_128x64_32x3_nhwc_align4>(cutlass_tensorop_s168
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 16] shapes=[[16, 128, 28, 28], [128, 128, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nn_align1>(cutlass_80_simt_sgemm_128x32_8x5_nn_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+
+[forward 17] shapes=[[16, 128, 28, 28], [512, 128, 1, 1], [], [], [], [], [], [], []]  kernels=1
+    [1] void implicit_convolve_sgemm<float, float, int, 1024, 5, 5, 3, 3, 3, 1, false, false, true>(int, int, int, float const*,
+
+[forward 18] shapes=[[16, 512, 28, 28], [128, 512, 1, 1], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_128x64_32x3_nhwc_align4>(cutlass_tensorop_s168
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 19] shapes=[[16, 128, 28, 28], [128, 128, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nn_align1>(cutlass_80_simt_sgemm_128x32_8x5_nn_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+
+[forward 20] shapes=[[16, 128, 28, 28], [512, 128, 1, 1], [], [], [], [], [], [], []]  kernels=1
+    [1] void implicit_convolve_sgemm<float, float, int, 1024, 5, 5, 3, 3, 3, 1, false, false, true>(int, int, int, float const*,
+
+[forward 21] shapes=[[16, 512, 28, 28], [128, 512, 1, 1], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_128x64_32x3_nhwc_align4>(cutlass_tensorop_s168
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 22] shapes=[[16, 128, 28, 28], [128, 128, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nn_align1>(cutlass_80_simt_sgemm_128x32_8x5_nn_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+
+[forward 23] shapes=[[16, 128, 28, 28], [512, 128, 1, 1], [], [], [], [], [], [], []]  kernels=1
+    [1] void implicit_convolve_sgemm<float, float, int, 1024, 5, 5, 3, 3, 3, 1, false, false, true>(int, int, int, float const*,
+
+[forward 24] shapes=[[16, 512, 28, 28], [256, 512, 1, 1], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_128x64_32x3_nhwc_align4>(cutlass_tensorop_s168
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 25] shapes=[[16, 256, 28, 28], [256, 256, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_128x64_32x3_nhwc_align4>(cutlass_tensorop_s168
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 26] shapes=[[16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 27] shapes=[[16, 512, 28, 28], [1024, 512, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 28] shapes=[[16, 1024, 14, 14], [256, 1024, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 29] shapes=[[16, 256, 14, 14], [256, 256, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nn_align1>(cutlass_80_simt_sgemm_128x32_8x5_nn_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+
+[forward 30] shapes=[[16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 31] shapes=[[16, 1024, 14, 14], [256, 1024, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 32] shapes=[[16, 256, 14, 14], [256, 256, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nn_align1>(cutlass_80_simt_sgemm_128x32_8x5_nn_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+
+[forward 33] shapes=[[16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 34] shapes=[[16, 1024, 14, 14], [256, 1024, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 35] shapes=[[16, 256, 14, 14], [256, 256, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nn_align1>(cutlass_80_simt_sgemm_128x32_8x5_nn_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+
+[forward 36] shapes=[[16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 37] shapes=[[16, 1024, 14, 14], [256, 1024, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 38] shapes=[[16, 256, 14, 14], [256, 256, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nn_align1>(cutlass_80_simt_sgemm_128x32_8x5_nn_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+
+[forward 39] shapes=[[16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 40] shapes=[[16, 1024, 14, 14], [256, 1024, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 41] shapes=[[16, 256, 14, 14], [256, 256, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nn_align1>(cutlass_80_simt_sgemm_128x32_8x5_nn_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+
+[forward 42] shapes=[[16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 43] shapes=[[16, 1024, 14, 14], [512, 1024, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 44] shapes=[[16, 512, 14, 14], [512, 512, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_64x64_32x5_nhwc_align4>(cutlass_tensorop_s1688
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 45] shapes=[[16, 512, 7, 7], [2048, 512, 1, 1], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_128x64_32x3_nhwc_align4>(cutlass_tensorop_s168
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 46] shapes=[[16, 1024, 14, 14], [2048, 1024, 1, 1], [], [], [], [], [], [], []]  kernels=3
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+
+[forward 47] shapes=[[16, 2048, 7, 7], [512, 2048, 1, 1], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_64x64_32x5_nhwc_align4>(cutlass_tensorop_s1688
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 48] shapes=[[16, 512, 7, 7], [512, 512, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_64x64_32x5_nhwc_align4>(cutlass_tensorop_s1688
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 49] shapes=[[16, 512, 7, 7], [2048, 512, 1, 1], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_128x64_32x3_nhwc_align4>(cutlass_tensorop_s168
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 50] shapes=[[16, 2048, 7, 7], [512, 2048, 1, 1], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_64x64_32x5_nhwc_align4>(cutlass_tensorop_s1688
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 51] shapes=[[16, 512, 7, 7], [512, 512, 3, 3], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_64x64_32x5_nhwc_align4>(cutlass_tensorop_s1688
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[forward 52] shapes=[[16, 512, 7, 7], [2048, 512, 1, 1], [], [], [], [], [], [], []]  kernels=4
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688fprop_optimized_tf32_128x64_32x3_nhwc_align4>(cutlass_tensorop_s168
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 00] shapes=[[16, 2048, 7, 7], [16, 512, 7, 7], [2048, 512, 1, 1], [], [], [], [], [], [], [], []]  kernels=7
+    [4] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688wgrad_optimized_tf32_128x64_16x6_nhwc_align4>(cutlass_tensorop_s168
+
+[backward 01] shapes=[[16, 512, 7, 7], [16, 512, 7, 7], [512, 512, 3, 3], [], [], [], [], [], [], [], []]  kernels=8
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_64x64_8x5_nt_align1>(cutlass_80_simt_sgemm_64x64_8x5_nt_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+    [1] sm80_xmma_wgrad_implicit_gemm_indexed_tf32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x128x16_stage4_warpsize2x2x1_g1_tenso
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 02] shapes=[[16, 512, 7, 7], [16, 2048, 7, 7], [512, 2048, 1, 1], [], [], [], [], [], [], [], []]  kernels=7
+    [4] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_128x64_32x3_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688wgrad_optimized_tf32_128x64_16x6_nhwc_align4>(cutlass_tensorop_s168
+
+[backward 03] shapes=[[16, 2048, 7, 7], [16, 512, 7, 7], [2048, 512, 1, 1], [], [], [], [], [], [], [], []]  kernels=7
+    [4] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688wgrad_optimized_tf32_128x64_16x6_nhwc_align4>(cutlass_tensorop_s168
+
+[backward 04] shapes=[[16, 512, 7, 7], [16, 512, 7, 7], [512, 512, 3, 3], [], [], [], [], [], [], [], []]  kernels=8
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_64x64_8x5_nt_align1>(cutlass_80_simt_sgemm_64x64_8x5_nt_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+    [1] sm80_xmma_wgrad_implicit_gemm_indexed_tf32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x128x16_stage4_warpsize2x2x1_g1_tenso
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 05] shapes=[[16, 512, 7, 7], [16, 2048, 7, 7], [512, 2048, 1, 1], [], [], [], [], [], [], [], []]  kernels=7
+    [4] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_128x64_32x3_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688wgrad_optimized_tf32_128x64_16x6_nhwc_align4>(cutlass_tensorop_s168
+
+[backward 06] shapes=[[16, 2048, 7, 7], [16, 1024, 14, 14], [2048, 1024, 1, 1], [], [], [], [], [], [], [], []]  kernels=7
+    [4] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_32x5_nhwc_align4>(cutlass_tensorop_s1688
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] sm80_xmma_wgrad_implicit_gemm_indexed_tf32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x128x16_stage4_warpsize2x2x1_g1_tenso
+
+[backward 07] shapes=[[16, 2048, 7, 7], [16, 512, 7, 7], [2048, 512, 1, 1], [], [], [], [], [], [], [], []]  kernels=7
+    [4] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688wgrad_optimized_tf32_128x64_16x6_nhwc_align4>(cutlass_tensorop_s168
+
+[backward 08] shapes=[[16, 512, 7, 7], [16, 512, 14, 14], [512, 512, 3, 3], [], [], [], [], [], [], [], []]  kernels=8
+    [4] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [2] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x128_16x6_nhwc_align4>(cutlass_tensorop_s168
+    [1] sm80_xmma_wgrad_implicit_gemm_indexed_tf32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x128x16_stage4_warpsize2x2x1_g1_tenso
+
+[backward 09] shapes=[[16, 512, 14, 14], [16, 1024, 14, 14], [512, 1024, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x256x32_2_64x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 10] shapes=[[16, 1024, 14, 14], [16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x80x32_3_32x40x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 11] shapes=[[16, 256, 14, 14], [16, 256, 14, 14], [256, 256, 3, 3], [], [], [], [], [], [], [], []]  kernels=9
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nt_align1>(cutlass_80_simt_sgemm_128x32_8x5_nt_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 12] shapes=[[16, 256, 14, 14], [16, 1024, 14, 14], [256, 1024, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x128x32_3_64x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 13] shapes=[[16, 1024, 14, 14], [16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x80x32_3_32x40x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 14] shapes=[[16, 256, 14, 14], [16, 256, 14, 14], [256, 256, 3, 3], [], [], [], [], [], [], [], []]  kernels=9
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nt_align1>(cutlass_80_simt_sgemm_128x32_8x5_nt_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 15] shapes=[[16, 256, 14, 14], [16, 1024, 14, 14], [256, 1024, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x128x32_3_64x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 16] shapes=[[16, 1024, 14, 14], [16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x80x32_3_32x40x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 17] shapes=[[16, 256, 14, 14], [16, 256, 14, 14], [256, 256, 3, 3], [], [], [], [], [], [], [], []]  kernels=9
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nt_align1>(cutlass_80_simt_sgemm_128x32_8x5_nt_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 18] shapes=[[16, 256, 14, 14], [16, 1024, 14, 14], [256, 1024, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x128x32_3_64x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 19] shapes=[[16, 1024, 14, 14], [16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x80x32_3_32x40x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 20] shapes=[[16, 256, 14, 14], [16, 256, 14, 14], [256, 256, 3, 3], [], [], [], [], [], [], [], []]  kernels=9
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nt_align1>(cutlass_80_simt_sgemm_128x32_8x5_nt_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 21] shapes=[[16, 256, 14, 14], [16, 1024, 14, 14], [256, 1024, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x128x32_3_64x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 22] shapes=[[16, 1024, 14, 14], [16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x80x32_3_32x40x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 23] shapes=[[16, 256, 14, 14], [16, 256, 14, 14], [256, 256, 3, 3], [], [], [], [], [], [], [], []]  kernels=9
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nt_align1>(cutlass_80_simt_sgemm_128x32_8x5_nt_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 24] shapes=[[16, 256, 14, 14], [16, 1024, 14, 14], [256, 1024, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x128x32_3_64x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 25] shapes=[[16, 1024, 14, 14], [16, 512, 28, 28], [1024, 512, 1, 1], [], [], [], [], [], [], [], []]  kernels=8
+    [4] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x128_16x6_nhwc_align4>(cutlass_tensorop_s168
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+
+[backward 26] shapes=[[16, 1024, 14, 14], [16, 256, 14, 14], [1024, 256, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x80x32_3_32x40x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 27] shapes=[[16, 256, 14, 14], [16, 256, 28, 28], [256, 256, 3, 3], [], [], [], [], [], [], [], []]  kernels=9
+    [4] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [2] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x128_16x6_nhwc_align4>(cutlass_tensorop_s168
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+
+[backward 28] shapes=[[16, 256, 28, 28], [16, 512, 28, 28], [256, 512, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_64x64_16x10_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x128x32_3_64x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 29] shapes=[[16, 512, 28, 28], [16, 128, 28, 28], [512, 128, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_128x64_32x3_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_64x128x32_4_32x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 30] shapes=[[16, 128, 28, 28], [16, 128, 28, 28], [128, 128, 3, 3], [], [], [], [], [], [], [], []]  kernels=9
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nt_align1>(cutlass_80_simt_sgemm_128x32_8x5_nt_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 31] shapes=[[16, 128, 28, 28], [16, 512, 28, 28], [128, 512, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_dgrad_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x64x32_4_32x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 32] shapes=[[16, 512, 28, 28], [16, 128, 28, 28], [512, 128, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_128x64_32x3_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_64x128x32_4_32x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 33] shapes=[[16, 128, 28, 28], [16, 128, 28, 28], [128, 128, 3, 3], [], [], [], [], [], [], [], []]  kernels=9
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nt_align1>(cutlass_80_simt_sgemm_128x32_8x5_nt_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 34] shapes=[[16, 128, 28, 28], [16, 512, 28, 28], [128, 512, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_dgrad_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x64x32_4_32x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 35] shapes=[[16, 512, 28, 28], [16, 128, 28, 28], [512, 128, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_128x64_32x3_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_64x128x32_4_32x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 36] shapes=[[16, 128, 28, 28], [16, 128, 28, 28], [128, 128, 3, 3], [], [], [], [], [], [], [], []]  kernels=9
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nt_align1>(cutlass_80_simt_sgemm_128x32_8x5_nt_align1::Params)
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 37] shapes=[[16, 128, 28, 28], [16, 512, 28, 28], [128, 512, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] sm80_xmma_dgrad_implicit_gemm_tf32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_128x64x32_4_32x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 38] shapes=[[16, 512, 28, 28], [16, 256, 56, 56], [512, 256, 1, 1], [], [], [], [], [], [], [], []]  kernels=12
+    [4] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void xmma__5x_cudnn::implicit_gemm::strided_dgrad_indexed::kernel_helper_stage_0<xmma__5x_cudnn::implicit_gemm::strided_
+    [1] void xmma__5x_cudnn::implicit_gemm::strided_dgrad_indexed::kernel_helper_stage_1<xmma__5x_cudnn::implicit_gemm::strided_
+    [1] void xmma__5x_cudnn::implicit_gemm::strided_dgrad_indexed::kernel_helper_stage_2<xmma__5x_cudnn::implicit_gemm::strided_
+    [1] void xmma__5x_cudnn::implicit_gemm::strided_dgrad_indexed::kernel_helper_stage_3<xmma__5x_cudnn::implicit_gemm::strided_
+    [1] sm80_xmma_dgrad_implicit_gemm_indexed_tf32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x128x16_stage4_warpsize2x2x1_g1_tenso
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+
+[backward 39] shapes=[[16, 512, 28, 28], [16, 128, 28, 28], [512, 128, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_128x64_32x3_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_64x128x32_4_32x64x32_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 40] shapes=[[16, 128, 28, 28], [16, 128, 56, 56], [128, 128, 3, 3], [], [], [], [], [], [], [], []]  kernels=13
+    [4] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [2] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] void xmma__5x_cudnn::implicit_gemm::strided_dgrad_indexed::kernel_helper_stage_0<xmma__5x_cudnn::implicit_gemm::strided_
+    [1] void xmma__5x_cudnn::implicit_gemm::strided_dgrad_indexed::kernel_helper_stage_1<xmma__5x_cudnn::implicit_gemm::strided_
+    [1] void xmma__5x_cudnn::implicit_gemm::strided_dgrad_indexed::kernel_helper_stage_2<xmma__5x_cudnn::implicit_gemm::strided_
+    [1] void xmma__5x_cudnn::implicit_gemm::strided_dgrad_indexed::kernel_helper_stage_3<xmma__5x_cudnn::implicit_gemm::strided_
+    [1] sm80_xmma_dgrad_implicit_gemm_indexed_tf32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x128x16_stage4_warpsize2x2x1_g1_tenso
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+
+[backward 41] shapes=[[16, 128, 56, 56], [16, 256, 56, 56], [128, 256, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_128x64_32x3_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_64x64x64_3_32x32x64_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 42] shapes=[[16, 256, 56, 56], [16, 64, 56, 56], [256, 64, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_128x64_32x3_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_64x32x64_4_16x32x64_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 43] shapes=[[16, 64, 56, 56], [16, 64, 56, 56], [64, 64, 3, 3], [], [], [], [], [], [], [], []]  kernels=9
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cudnn::winograd_nonfused::winogradForwardData4x4<float, float>(cudnn::winograd_nonfused::WinogradDataParams<float, 
+    [1] void cudnn::winograd_nonfused::winogradForwardFilter4x4<float, float>(cudnn::winograd_nonfused::WinogradFilterParams<flo
+    [1] void magma_sgemmEx_kernel<float, float, float, false, true, 6, 4, 6, 3, 4>(int, int, int, BatchedTensor, int, BatchedTen
+    [1] void cudnn::winograd_nonfused::winogradForwardOutput4x4<float, float>(cudnn::winograd_nonfused::WinogradOutputParams<flo
+    [1] _ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23ImplicitGemmConvolutionINS1_11threadblock22ImplicitGemmMultistageINS_4gem
+    [1] void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::reduction::kernel::ReduceSplitK<cutlass__5x_cudnn::MatrixShape<4, 128>
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+
+[backward 44] shapes=[[16, 64, 56, 56], [16, 256, 56, 56], [64, 256, 1, 1], [], [], [], [], [], [], [], []]  kernels=6
+    [2] void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)2>(cudnn::eng
+    [1] void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s1688dgrad_optimized_tf32_128x64_32x3_nhwc_unity_stride_align4>(cutlass_
+    [1] void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::eng
+    [1] nvjet_sm120_sss_tf32_mma_64x32x64_4_16x32x64_tmaAB_alignCD4_bz_TNNN
+    [1] void cudnn::cnn::reduce_wgrad_nchw_helper<float, float>(void*, void const*, float, int, int)
+
+[backward 45] shapes=[[16, 256, 56, 56], [16, 64, 56, 56], [256, 64, 1, 1], [], [], [], [], [], [], [], []]  kernels=0
+
+[backward 46] shapes=[[16, 64, 56, 56], [16, 64, 56, 56], [64, 64, 3, 3], [], [], [], [], [], [], [], []]  kernels=0
+
+[backward 47] shapes=[[16, 64, 56, 56], [16, 256, 56, 56], [64, 256, 1, 1], [], [], [], [], [], [], [], []]  kernels=0
+
+[backward 48] shapes=[[16, 256, 56, 56], [16, 64, 56, 56], [256, 64, 1, 1], [], [], [], [], [], [], [], []]  kernels=0
+
+[backward 49] shapes=[[16, 256, 56, 56], [16, 64, 56, 56], [256, 64, 1, 1], [], [], [], [], [], [], [], []]  kernels=0
+
+[backward 50] shapes=[[16, 64, 56, 56], [16, 64, 56, 56], [64, 64, 3, 3], [], [], [], [], [], [], [], []]  kernels=0
+
+[backward 51] shapes=[[16, 64, 56, 56], [16, 64, 56, 56], [64, 64, 1, 1], [], [], [], [], [], [], [], []]  kernels=0
+
+[backward 52] shapes=[[16, 64, 112, 112], [16, 3, 224, 224], [64, 3, 7, 7], [], [], [], [], [], [], [], []]  kernels=0

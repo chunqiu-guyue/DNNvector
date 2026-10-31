@@ -1,0 +1,80 @@
+#include "../include/declaration2.cuh"
+#include <cuda.h>
+#include <cstdio>
+#include <stdlib.h>
+#include <time.h>
+
+// Error checking marco
+#define CUDA_CHECK_RET(x)                                               \
+  do {                                                                  \
+    cudaError_t err_code = x;                                           \
+    if (err_code != 0) {                                                \
+      printf("Failed at %s:%d w/ code %d <%s>, abort\n",                \
+          __FILE__, __LINE__, err_code, cudaGetErrorString(err_code));  \
+      exit(1);                                                          \
+    }                                                                   \
+  } while (0)
+
+// Workspace
+float *workspace_base;
+
+// helper functions
+void generate_data(float *base, long long size) {
+  for(long long i = 0; i < size; i++){
+    base[i] = (float)(rand() % 256); 
+  }
+}
+
+void generate_mask(float *base, long long size, float p) {
+  for(long long i = 0; i < size; i++){
+    float m = (float) (rand() % 1000000); 
+    base[i] = m < (p * 1000000) ? 1.0f : 0.0f;
+  }
+}
+
+// declare all tensors
+float *tensor956, *tensor970, *tensor971, *tensor973, *tensor975, *tensor972;
+
+void run_iteration() {
+  cudaEvent_t start, stop;
+  float elapsedTime;
+
+  cudaEventCreate(&start);
+  cudaEventCreate(&stop);
+  cudaEventRecord(start, 0);
+  // In:[64][1024][7][7], Out:[64][2048][7][7], Weight:[2048][1024][1][1]
+  forwardPass_conv2d_l136<<<64, 0>>>((float (*)[1024][7][7]) tensor956, (float (*)[2048][7][7]) tensor970, (float (*)[1024][1][1]) tensor971);
+
+  cudaEventRecord(stop, 0);
+  CUDA_CHECK_RET( cudaEventSynchronize(stop) );
+  cudaEventElapsedTime(&elapsedTime, start, stop);
+  printf("137 %20.10f ms\n", elapsedTime);
+}
+
+// main function
+int main(int argc, const  char **argv) {
+  // Workspace malloc
+  cudaMallocManaged(&workspace_base, 93847552);
+  
+  // Weight addr assignment
+  tensor956 = workspace_base + 0;
+  tensor970 = workspace_base + 3211264;
+  tensor971 = workspace_base + 9633792;
+  tensor973 = workspace_base + 11730944;
+  tensor975 = workspace_base + 14942208;
+  tensor972 = workspace_base + 21364736;
+
+  // Data & mask generation
+  generate_data(tensor956, 3211264);
+  generate_data(tensor970, 6422528);
+  generate_data(tensor971, 2097152);
+  generate_data(tensor973, 3211264);
+  generate_data(tensor975, 6422528);
+  generate_data(tensor972, 2097152);
+
+  // Run iteration
+  run_iteration();
+
+  // Free
+  cudaFree(workspace_base);
+}

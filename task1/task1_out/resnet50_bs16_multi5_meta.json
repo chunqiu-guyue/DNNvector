@@ -1,0 +1,19 @@
+{
+  "model": "resnet50",
+  "batch_size": 16,
+  "input_size": 224,
+  "num_classes": 1000,
+  "mode": "train",
+  "warmup_steps": 3,
+  "active_steps": 5,
+  "total_steps": 8,
+  "recorded_step_range": [
+    3,
+    7
+  ],
+  "trace_path": "./task1_out/resnet50_bs16_multi5_kernel_trace.json",
+  "torch_version": "2.14.0+cu132",
+  "cuda_version": "13.2",
+  "device_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "note": "profile_memory=off；显存侧证据沿用单步 mem_snapshot.pickle"
+}
