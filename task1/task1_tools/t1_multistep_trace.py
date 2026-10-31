@@ -1,29 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-t1_multistep_trace.py —— 任务一：多步稳态采样（跨迭代稳定性的唯一缺口）
+"""t1_multistep_trace.py —— 多步稳态采样，供稳定性分析切窗。
 
-背景
-----
-现有 resnet50_bs16_kernel_trace.json 是 schedule(wait=2, warmup=0, active=1) 采的，
-只记录了 1 个稳态步。因此"跨迭代稳定性"目前没有任何实测证据。
-本脚本采 warmup=3 + active=5，即记录连续 5 个稳态步，并在每步插入
-record_function("STEP#i") 标记，供 t1_stability.py 切窗。
-
-与 torch 官方 profiler 的关系
-----------------------------
-profile_memory 关闭：多步开启会写爆内存。显存侧证据已有单步的 mem_snapshot.pickle，
-不需要在这里重复采。
-
-用法
-----
-    python3 t1_multistep_trace.py --output-dir ./task1_out
-    python3 t1_multistep_trace.py --active 8 --batch-size 16     # 想采更多步
-
-输出
-----
-    task1_out/resnet50_bs16_multi5_kernel_trace.json
-    task1_out/resnet50_bs16_multi5_meta.json
+采 warmup=3、active=5，每步插入 record_function("STEP#i") 标记。
+输出  *_multi5_kernel_trace.json / *_multi5_meta.json
+用法  python3 t1_multistep_trace.py --output-dir ./task1_out
 """
 
 import argparse

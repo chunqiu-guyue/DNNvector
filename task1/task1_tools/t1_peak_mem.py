@@ -1,23 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-t1_peak_mem.py —— 可选：显存峰值对账（不需要新测量，用现成文件）
+"""t1_peak_mem.py —— 显存峰值对账（可选，不产生新测量）。
 
-作用
-----
-把 G10 模拟出的逐 kernel 显存占用（statistics/real_mem.config）与
-PyTorch 实测的分配快照（resnet50_bs16_mem_snapshot.pickle）放在一起比，
-回答一个报告里很自然会被问到的问题：
-
-    "G10 的静态分析算出来的显存曲线，与真机分配器看到的峰值一致吗？"
-
-这不是任务一的必需项，但它能把"非活跃窗口"的可卸载量与真实显存占用挂上钩，
-让"可卸载比例"这个数字有分母。
-
-用法
-----
-    python3 t1_peak_mem.py \
-        --real-mem ../ResNet50/statistics/real_mem.config \
+比较 G10 的 real_mem.config 与 PyTorch 分配快照的峰值。
+用法  python3 t1_peak_mem.py --real-mem ../ResNet50/statistics/real_mem.config \
         --snapshot ../resnet50_bs16_mem_snapshot.pickle
 """
 

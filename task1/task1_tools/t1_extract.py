@@ -1,39 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-t1_extract.py —— 任务一：把 G10 的四个 config 解析成一张可计算的主表
+"""t1_extract.py —— 把 G10 的四个 config 解析成可计算的主表。
 
-读 4 个文件
------------
-    <g10-dir>/cudnn_kernel_times.txt          449 行，逐调度单元实测耗时
-    <g10-dir>/statistics/interval.config      697 个非活跃窗口（Hidding_Interval）
-    <g10-dir>/statistics/kernels.config       449 个 kernel 的 层归属 + 输入输出张量
-    <g10-dir>/statistics/layers.config        每层的 Input/Output/d_Input/d_Output/Weight/d_Weight
-    <g10-dir>/statistics/tensors.config       张量清单（size / 是否全局）
+输入  <g10-dir>/cudnn_kernel_times.txt 与 statistics/{interval,kernels,layers,tensors}.config
+输出  kernels.csv / tensors.csv / intervals.csv / axis.json / extract_report.txt
 
-输出
-----
-    task1_out/kernels.csv    kid,name,layer_id,layer_name,dur_us,shape,n_in,n_out
-    task1_out/tensors.csv    tid,size_bytes,is_global,role,birth,death
-    task1_out/intervals.csv  tid,size_bytes,is_global,is_looped,k_start,k_end,
-                             est_raw,dur_us,t_start_us,t_end_us,role,cross_phase
-    task1_out/axis.json      {"prefix_us": [...], "fwd_end_kernel": N, "n_kernel": 449}
-    task1_out/extract_report.txt
-
-时间单位（本脚本的核心口径，报告里必须照抄）
---------------------------------------------
-G10 把 cudnn_kernel_times.txt 的数值按 ms 读入，但实测数值本身是 µs 量级：
-449 行求和 ≈ 162671，而 PyTorch trace 的单步墙钟 ≈ 152940 µs。
-因此本脚本：
-    1) 先判定 cudnn_kernel_times.txt 的数值单位（auto：sum>10000 视为 µs）
-    2) 统一换算成 µs
-    3) interval.config 的 Estimated Time 是 ns（= µs × 1000），÷1000 后与实测同量级
-    4) 论文 figure_drawing/plot_tensor_period_distribution.py 的 x 轴就标 "Inactive Time (µs)"，
-       与本脚本口径一致
-
-用法
-----
-    python3 t1_extract.py --g10-dir ../ResNet50 --outdir ./task1_out
+时间口径：kernel 时间表为 µs，interval.config 的 Estimated Time 为 ns，统一换算到 µs。
+用法  python3 t1_extract.py --g10-dir ../ResNet50 --outdir ./task1_out
 """
 
 import argparse
@@ -331,7 +304,7 @@ def main():
         f"  其中 is_looped=1      : {sum(iv['is_looped'] for iv in intervals)}",
         f"  其中 is_global=1      : {sum(iv['is_global'] for iv in intervals)}",
         f"  跨前后向(全部记录)    : {n_cross}",
-        f"  跨前后向(清洗后)      : {n_cross_clean}  ← 分析脚本表 4 用的是这个",
+        f"  跨前后向(清洗后)      : {n_cross_clean}  ← 分层表的跨相位行",
         "",
         "下一步：python3 t1_analyze.py --indir ./task1_out",
     ]

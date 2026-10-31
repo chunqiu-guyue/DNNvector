@@ -1,40 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-t1_stability.py —— 任务一：跨迭代稳定性（时长层证据）
+"""t1_stability.py —— 跨迭代稳定性（时长层）。
 
-前置：t1_multistep_trace.py 已产出 *_multi5_kernel_trace.json
+输入  t1_multistep_trace.py 产出的 *_multi5_kernel_trace.json
+输出  stability.json / stability.md
 
-判据（三层）
-------------
-1) 迭代墙钟 CV = std/mean        < 3% 稳 / 3–8% 弱稳 / >8% 不稳
-2) kernel 数恒定性                各步 n_kernel 必须完全相同
-3) 逐 op 耗时一致性               按 launcher op 位置对齐，算每 op 的 CV 与跨步 Spearman
-
-两条对齐路径（自动选择）
-------------------------
-A. op 级（首选）：用 trace 自带的 cpu_op → kernel 的 `External id` 关联，
-   把每次 cuDNN 调用聚成一个"op 耗时"，再按出现顺序跨步对齐。
-   这是与 G10"调度单元"同一层次的粒度。
-
-B. kernel 名级（退化）：如果 A 路径一个 op 都匹配不到（torch 版本改了 op 名、
-   或 External id 未关联），自动退化为按 kernel 名字聚合 count/耗时再跨步比较。
-   粒度粗一些，但绝不空手而归。
-
-为什么不用 G10 的 449 个调度单元直接比
---------------------------------------
-G10 的 449 是"调度单元"（一次 cuDNN 调用），trace 里的 921 是真实 CUDA kernel，
-两者不是一一对应。A 路径按 cuDNN 调用聚合，才是同一层次的可比值。
-
-诊断
-----
-脚本会打印：窗口内 cpu_op 数、带 External id 的 op 数、成功关联 kernel 的 op 数、
-以及出现最多的 op 名称。A 路径失效时用这几行定位原因。
-
-用法
-----
-    python3 t1_stability.py --trace ./task1_out/resnet50_bs16_multi5_kernel_trace.json
-    python3 t1_stability.py --trace ... --mode kernel      # 强制走退化路径
+判据：整步墙钟 CV < 3%、各步 kernel 数相同、逐算子 CV 与跨步秩相关。
+按 cpu_op 的 External id 把 kernel 聚成算子耗时，关联失败时退化为按 kernel 名比较。
+用法  python3 t1_stability.py --trace ./task1_out/resnet50_bs16_multi5_kernel_trace.json
 """
 
 import argparse
@@ -387,7 +360,7 @@ def main():
     with open(path, "w", encoding="utf-8") as f:
         json.dump(res, f, indent=2, ensure_ascii=False)
 
-    md = ["### 表 7 跨迭代稳定性：逐步原始值\n",
+    md = ["### 跨迭代稳定性：逐步原始值\n",
           "| step | 墙钟(µs) | kernel 跨度(µs) | kernel 数 | kernel 时间和(µs) |",
           "|---|---|---|---|---|"]
     for p in per_step:
@@ -429,11 +402,9 @@ def main():
             md.append(f"| {short} | {kl['counts_per_step'][n]} | {fmt_pct(kl['time_cv'][n])} |")
 
     if diag_all:
-        md.append(f"\n**诊断**：窗内 cpu_op {diag_all['n_cpu_op_in_window']} 个，"
-                  f"带 External id {diag_all['n_cpu_op_with_ext_id']} 个，"
-                  f"成功关联 kernel {diag_all['n_cpu_op_matched_kernel']} 个")
-        if diag_all["top_op_names"]:
-            md.append(f"  最常见的 cpu_op：{diag_all['top_op_names'][:4]}")
+        print(f"[诊断] cpu_op {diag_all['n_cpu_op_in_window']}，"
+              f"带 External id {diag_all['n_cpu_op_with_ext_id']}，"
+              f"关联 kernel {diag_all['n_cpu_op_matched_kernel']}")
 
     txt = "\n".join(md)
     with open(os.path.join(outdir, "stability.md"), "w", encoding="utf-8") as f:

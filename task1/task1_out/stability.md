@@ -1,4 +1,4 @@
-### 表 7 跨迭代稳定性：逐步原始值
+### 跨迭代稳定性：逐步原始值
 
 | step | 墙钟(µs) | kernel 跨度(µs) | kernel 数 | kernel 时间和(µs) |
 |---|---|---|---|---|
@@ -32,6 +32,3 @@
 | aten::fill_ | [3, 3, 3, 3, 3] | 3 | 2.46% | 1 | 55.1 |
 | aten::addmm | [1, 1, 1, 1, 1] | 1 | 4.48% | 0 | 51.4 |
 | aten::mm | [2, 2, 2, 2, 2] | 2 | 0.39% | 0 | 20.7 |
-
-**诊断**：窗内 cpu_op 2503 个，带 External id 2503 个，成功关联 kernel 410 个
-  最常见的 cpu_op：[('aten::empty', 530), ('autograd::engine::evaluate_function: torch::autograd::AccumulateGrad', 161), ('torch::autograd::AccumulateGrad', 161), ('aten::detach', 161)]
